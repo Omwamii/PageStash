@@ -25,7 +25,6 @@ model User {
   lastName String?
 
   bookmarks BookMark[]
-  @@map("users")
 }
 
 model BookMark {
@@ -39,6 +38,4 @@ model BookMark {
 
   userId Int
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@map("bookmarks")
 }

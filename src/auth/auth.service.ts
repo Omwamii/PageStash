@@ -25,6 +25,8 @@ export class AuthService {
                     hash,
                 }
             })
+            console.log(`Signing up user with email: ${dto.email}`)
+
             return this.signToken(user.id, user.email);
         } catch (error) {
             if (error instanceof PrismaClientKnownRequestError) {
@@ -55,6 +57,8 @@ export class AuthService {
         if (!isMatching) {
             throw new ForbiddenException('Incorrect credentials');
         }
+
+        console.log(`Signing in user with email: ${user.email}`)
 
         return this.signToken(user.id, user.email);
     }

@@ -14,8 +14,9 @@ export class UserController {
     @Get('me')
     @ApiOperation({ summary: 'Get my info' })
     getMe(@GetUser('id') userId: number) {
-        console.log(userId);
-        return userId;
+        // console.log(userId);
+        // return userId;
+        return this.userService.getUser(userId);
     }
 
     @Patch()

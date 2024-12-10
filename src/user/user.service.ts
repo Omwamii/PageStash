@@ -19,4 +19,16 @@ export class UserService {
         delete user.hash;
         return user;
     }
+
+    async getUser(userId: number) {
+        const user = await this.prisma.user.findUnique({
+            where: {
+                id: userId,
+            }
+        })
+
+        delete user.hash;
+
+        return user;
+    }
 }

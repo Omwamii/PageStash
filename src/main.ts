@@ -16,11 +16,12 @@ async function bootstrap() {
     .setTitle('PageStash API docs')
     .setDescription('API description for the PageStash bookmark API')
     .setVersion('1.0')
+    .addBearerAuth() 
     .build()
 
   const document = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('api/docs', app, document);
-  
+
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
