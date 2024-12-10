@@ -24,7 +24,12 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- PageStash is a simple Bookmark Api
+- Features:
+  - User authentication (jwt)
+  - User can add bookmarks
+  - User can edit bookmarks
+  - User can delete bookmarks
 
 ## Project setup
 
