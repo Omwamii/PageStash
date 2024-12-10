@@ -44,10 +44,16 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-## API DOCS
-To view the APIs, run the server on localhost and visit ```bash
-http://localhost/api/docs
+
+## Setup database container
+
+```bash
+$ docker-compose up
 ```
+
+## API DOCS
+To view the APIs, run the server on localhost and visit http://localhost:3000/api/docs
+
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
