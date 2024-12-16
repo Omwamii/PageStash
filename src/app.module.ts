@@ -17,8 +17,8 @@ import { join } from 'path';
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      sortSchema: true,
+      autoSchemaFile: join(process.cwd(), 'src/graphql/schema.gql'),
+      playground: true,
     }),
     AuthModule,
     UserModule, 

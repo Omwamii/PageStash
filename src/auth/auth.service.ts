@@ -25,6 +25,7 @@ export class AuthService {
                     hash,
                 }
             })
+            
             console.log(`Signing up user with email: ${dto.email}`)
 
             return this.signToken(user.id, user.email);
