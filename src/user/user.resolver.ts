@@ -13,8 +13,8 @@ export class UserResolver {
     return this.userService.getUsers();
   } 
 
-  @Query(() => UserDto, { name: 'user' })
-  async findOne(@Args('id', { type: () => Int }) id: number): Promise<UserDto> {
+  @Query(() => UserDto, { name: 'user', nullable: true })
+  async findOne(@Args('id', { type: () => Int }) id: number): Promise<UserDto | null>{
     return this.userService.getUser(id);
   }
 
@@ -23,13 +23,13 @@ export class UserResolver {
     return this.userService.createUser(data);
   }
 
-  @Mutation(() => UserDto)
-  async updateUser(@Args('id', { type: () => Int}) id: number, @Args('data') data: EditUserDto): Promise<UserDto> {
+  @Mutation(() => UserDto, { nullable: true })
+  async updateUser(@Args('id', { type: () => Int}) id: number, @Args('data') data: EditUserDto): Promise<UserDto | null> {
     return this.userService.editUser(id, data);
   }
 
-  @Mutation(() => UserDto)
-  async removeUser(@Args('id', { type: () => Int }) id: number): Promise<UserDto> {
+  @Mutation(() => UserDto, { nullable: true})
+  async removeUser(@Args('id', { type: () => Int }) id: number): Promise<UserDto | null> {
     return this.userService.deleteUser(id);
   }
 

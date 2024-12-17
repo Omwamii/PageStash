@@ -5,9 +5,9 @@ import { BookmarkResolver } from './bookmark.resolver';
 import { UserModule } from 'src/user/user.module';
 
 @Module({
-  imports: [forwardRef(() => UserModule)],
+  imports: [forwardRef(() => UserModule)], // handle circular import btwn UserModule & BookMarkModule
   controllers: [BookmarkController],
   providers: [BookmarkService, BookmarkResolver],
-  exports: [BookmarkService],  // got rid of unresolved dependancy in UserResolver
+  exports: [BookmarkService],
 })
 export class BookmarkModule {}

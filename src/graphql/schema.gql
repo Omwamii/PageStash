@@ -28,18 +28,18 @@ type UserDto {
 
 type Query {
   users: [UserDto!]!
-  user(id: Int!): UserDto!
+  user(id: Int!): UserDto
   bookmarks(id: Int!): [BookMarkDto!]!
-  bookmark(id: Int!): BookMarkDto!
+  bookmark(id: Int!): BookMarkDto
 }
 
 type Mutation {
   createUser(data: CreateUserDto!): UserDto!
-  updateUser(id: Int!, data: EditUserDto!): UserDto!
-  removeUser(id: Int!): UserDto!
-  createBookmark(id: Int!, data: CreateBookmarkDto!): BookMarkDto!
-  updateBookmark(userId: Int!, id: Int!, data: EditBookmarkDto!): BookMarkDto!
-  deleteBookmark(userId: Int!, id: Int!): BookMarkDto!
+  updateUser(id: Int!, data: EditUserDto!): UserDto
+  removeUser(id: Int!): UserDto
+  createBookmark(id: Int!, data: CreateBookmarkDto!): BookMarkDto
+  updateBookmark(userId: Int!, id: Int!, data: EditBookmarkDto!): BookMarkDto
+  deleteBookmark(userId: Int!, id: Int!): BookMarkDto
 }
 
 input CreateUserDto {

@@ -8,42 +8,37 @@ import { UserService } from 'src/user/user.service';
 export class BookmarkResolver {
   constructor(private readonly bookmarkService: BookmarkService, private userService: UserService) {}
 
-  // Query to fetch all bookmarks
   @Query(() => [BookMarkDto], { name: 'bookmarks' })
   async findAll(@Args('id', { type: () => Int }) id: number): Promise<BookMarkDto[]> {
     return this.bookmarkService.getBookmarks(id);
   }
 
-  // Query to fetch a single bookmark by ID
-  @Query(() => BookMarkDto, { name: 'bookmark' })
-  async findOne(@Args('id', { type: () => Int }) id: number): Promise<BookMarkDto> {
+  @Query(() => BookMarkDto, { name: 'bookmark', nullable: true })
+  async findOne(@Args('id', { type: () => Int }) id: number): Promise<BookMarkDto | null> {
     return this.bookmarkService.getBookmarkById(id);
   }
 
-  // Mutation to create a new bookmark
-  @Mutation(() => BookMarkDto, { name: 'createBookmark' })
+  @Mutation(() => BookMarkDto, { name: 'createBookmark', nullable: true })
   async create(
     @Args('id', { type: () => Int }) userId: number,
     @Args('data') data: CreateBookmarkDto,
-  ): Promise<BookMarkDto> {
+  ): Promise<BookMarkDto | null> {
     return this.bookmarkService.createBookmark(userId, data);
   }
 
-  // Mutation to update an existing bookmark
-  @Mutation(() => BookMarkDto, { name: 'updateBookmark' })
+  @Mutation(() => BookMarkDto, { name: 'updateBookmark', nullable: true })
   async update(
     @Args('userId', { type: () => Int}) userId: number,
     @Args('id', { type: () => Int }) id: number,
     @Args('data') data: EditBookmarkDto,
-  ): Promise<BookMarkDto> {
+  ): Promise<BookMarkDto | null> {
     return this.bookmarkService.editBookmarkById(userId, id, data);
   }
 
-  // Mutation to delete a bookmark
-  @Mutation(() => BookMarkDto, { name: 'deleteBookmark' })
+  @Mutation(() => BookMarkDto, { name: 'deleteBookmark', nullable: true })
   async delete(
     @Args('userId', { type: () => Int }) userId: number,
-    @Args('id', { type: () => Int }) id: number): Promise<BookMarkDto> {
+    @Args('id', { type: () => Int }) id: number): Promise<BookMarkDto | null> {
     return this.bookmarkService.deleteBookmarkById(userId, id);
   }
 

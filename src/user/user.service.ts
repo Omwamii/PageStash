@@ -32,6 +32,15 @@ export class UserService {
     }
 
     async editUser(userId: number, dto: EditUserDto) {
+        const existingUser = await this.prisma.user.findUnique({
+            where: { id: userId },
+          });
+        
+          if (!existingUser) {
+           // user does not exist, avoid throwing exceptions from db
+           return null;
+          }
+        
         const user = await this.prisma.user.update({
             where: {
                 id: userId
@@ -64,6 +73,15 @@ export class UserService {
     }
 
     async deleteUser(userId: number) {
+        const existingUser = await this.prisma.user.findUnique({
+            where: { id: userId },
+          });
+        
+        if (!existingUser) {   
+            // user does not exist, avoid throwing exceptions from db
+            return null;
+        }
+
         return this.prisma.user.delete({
             where: {
                 id: userId,
