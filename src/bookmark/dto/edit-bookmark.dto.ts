@@ -1,19 +1,29 @@
-import { IsOptional, IsString } from "class-validator"
-import { ApiProperty } from '@nestjs/swagger';
+import { InputType, Field } from '@nestjs/graphql';
+import { IsOptional, IsString } from 'class-validator';
 
+@InputType()
 export class EditBookmarkDto {
-    @IsString()
-    @IsOptional()
-    @ApiProperty({ example: 'Remote tech jobs', description: 'Title of the bookmark'})
-    title?: string
+  @Field(() => String, {
+    nullable: true,
+    description: 'Title of the bookmark',
+  })
+  @IsString()
+  @IsOptional()
+  title?: string;
 
-    @IsString()
-    @IsOptional()
-    @ApiProperty({ example: 'Expertly curated remote jobs in tech', description: 'A short description of the bookmark'})
-    description?: string
+  @Field(() => String, {
+    nullable: true,
+    description: 'A short description of the bookmark',
+  })
+  @IsString()
+  @IsOptional()
+  description?: string;
 
-    @IsString()
-    @IsOptional()
-    @ApiProperty({ example: 'https://jobspresso.co/', description: 'Link to the bookmark'})
-    link?: string
+  @Field(() => String, {
+    nullable: true,
+    description: 'Link to the bookmark',
+  })
+  @IsString()
+  @IsOptional()
+  link?: string;
 }

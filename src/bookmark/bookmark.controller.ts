@@ -18,8 +18,8 @@ export class BookmarkController {
 
     @Get(':id')
     @ApiOperation({ summary: 'Get a bookmark' })
-    getBookmarkById(@GetUser('id') userId: number, @Param('id', ParseIntPipe) bookmarkId: number) {
-        return this.bookmarkService.getBookmarkById(userId, bookmarkId)
+    getBookmarkById(@Param('id', ParseIntPipe) bookmarkId: number) {
+        return this.bookmarkService.getBookmarkById(bookmarkId)
     }
 
     @Post()

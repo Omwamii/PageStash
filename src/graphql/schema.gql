@@ -1,0 +1,78 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type BookMarkDto {
+  id: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  title: String!
+  description: String
+  link: String!
+  userId: Int!
+  user: [UserDto!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type UserDto {
+  id: Int!
+  email: String!
+  firstName: String
+  lastName: String
+  bookmarks: [BookMarkDto]!
+}
+
+type Query {
+  users: [UserDto!]!
+  user(id: Int!): UserDto!
+  bookmarks(id: Int!): [BookMarkDto!]!
+  bookmark(id: Int!): BookMarkDto!
+}
+
+type Mutation {
+  createUser(data: CreateUserDto!): UserDto!
+  updateUser(id: Int!, data: EditUserDto!): UserDto!
+  removeUser(id: Int!): UserDto!
+  createBookmark(id: Int!, data: CreateBookmarkDto!): BookMarkDto!
+  updateBookmark(userId: Int!, id: Int!, data: EditBookmarkDto!): BookMarkDto!
+  deleteBookmark(userId: Int!, id: Int!): BookMarkDto!
+}
+
+input CreateUserDto {
+  email: String!
+  password: String!
+  firstName: String
+  lastName: String
+}
+
+input EditUserDto {
+  email: String
+  firstName: String
+  lastName: String
+}
+
+input CreateBookmarkDto {
+  """Title of the bookmark"""
+  title: String!
+
+  """A short description of the bookmark"""
+  description: String
+
+  """Link to the bookmark"""
+  link: String!
+}
+
+input EditBookmarkDto {
+  """Title of the bookmark"""
+  title: String
+
+  """A short description of the bookmark"""
+  description: String
+
+  """Link to the bookmark"""
+  link: String
+}

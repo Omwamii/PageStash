@@ -19,6 +19,7 @@ export class UserService {
 
     async createUser (dto: CreateUserDto) {
         const hash = await argon.hash(dto.password);
+        delete dto.password // add hash instead
         const user = await this.prisma.user.create({
             data: {
                 ...dto,
